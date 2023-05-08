@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Form Validation</title>
+  <style>
+    h1 {
+        font-size:40px;
+        font-family:Roboto;
+        font-weight:normal;
+        color:rgb(50,50,50);
+        text-align:center;
+      }
+     h2 {
+        font-family:Roboto;
+        font-size:32px;
+        color:ghostwhite
+      }
+       #banner{
+        width:100%;
+        height:360px;
+        object-fit:cover;
+      }
+      #container{
+        text-align:center;
+        
+        color:white;
+      }
+      form{
+        text-align:center;
+      }
+      label,input{
+        display: block;
+        margin:5px auto;
+        text-align:left;
+        width:200px;
+        font-size:20px;
+      }
+      #button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-family:Roboto;
+        font-size: 20px;
+        margin: 2px 2px;
+        cursor: pointer;
+      }
+    body{
+      background-image:url(static\banner1.jpg);
+    }
+    </style>
+      <script>
+            function validateForm() {
+                  var reg_no = document.forms["myForm"]["reg_no"].value;
+                  var chassis_no = document.forms["myForm"]["chassis_no"].value;
+                  var vehicle_type = document.forms["myForm"]["vehicle_type"].value;
+                  var amount = document.forms["myForm"]["amount"].value;
+
+                  if (reg_no == "") {
+                        alert("Registration number must be filled out");
+                        return false;
+                  }
+
+                  if (chassis_no == "" || chassis_no.length != 12) {
+                        alert("Chassis number must be 12 digits");
+                        return false;
+                  }
+
+                  if (vehicle_type != "H" && vehicle_type != "L" && vehicle_type != "S") {
+                        alert("Invalid vehicle type");
+                        return false;
+                  }
+
+                  if (amount == "" || isNaN(amount)) {
+                        alert("Amount must be a number");
+                        return false;
+                  }
+
+                  if (vehicle_type == "S" && amount < 2000) {
+                        alert("Amount must be at least 2000 for Small vehicles");
+                        return false;
+                  }
+
+                  if (vehicle_type == "L" && amount < 6000) {
+                        alert("Amount must be at least 6000 for Light vehicles");
+                        return false;
+                  }
+
+                  if (vehicle_type == "H" && amount < 10000) {
+                        alert("Amount must be at least 10000 for Heavy vehicles");
+                        return false;
+                  }
+            }
+      </script>
+</head>
+<body bgcolor=”#800000" >
+  <div >
+    <img  id='banner' src='static\banner.jpg'       >
+    </div >
+      <h2 style=text-align:center>Vehicle Registration Form</h2>
+      <form style=color:#FFCC66 name="myForm" onsubmit="return validateForm()" method="POST">
+            <label  for="reg_no">Registration Number:</label>
+            <input type="text" id="reg_no" name="reg_no">
+
+            <label for="chassis_no">Chassis Number:</label>
+            <input type="text" id="chassis_no" name="chassis_no">
+
+            <label for="vehicle_type">Vehicle Type:</label>
+            <input type="text" id="vehicle_type" name="vehicle_type">
+
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount"><br>
+
+            <input id='button' type="submit" value="Submit"><br><br>
+      </form>
+<a href="{{ url_for('all_records') }}">View All Records</a>
+
+</body>
+</html>

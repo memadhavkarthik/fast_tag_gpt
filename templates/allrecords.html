@@ -1,0 +1,42 @@
+<style>
+  table {
+    border-collapse: collapse;
+    border: 2px solid black;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #333;
+    color: white;
+  }
+</style>
+<table>
+  <tr>
+    <th>Fast ID</th>
+    <th>Registration Number</th>
+    <th>Chassis Number</th>
+    <th>Vehicle Type</th>
+    <th>Amount</th>
+    <th>Expiry Date</th>
+  </tr>
+  {% for record in records %}
+  <tr>
+    <td>{{ record[2] }}</td>
+    <td>{{ record[0] }}</td>
+    <td>{{ record[1] }}</td>
+    <td>{{ record[3] }}</td>
+    <td>{{ record[4] }}</td>
+    <td>{{ record[5] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<p>Enter Fast id to delete:</p>
+<form method="POST" action="{{ url_for('delete_record') }}">
+  <label for="fast_id">Fast ID:</label>
+  <input type="text" id="fast_id" name="fast_id"><br><br>
+  <input type="submit" value="Delete Record">
+</form>

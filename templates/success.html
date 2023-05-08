@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fasttag card</title>
+ <style>
+    h1 {
+        font-size:40px;
+        font-family:Roboto;
+        font-weight:normal;
+        color:ghostwhite;
+        text-align:center;
+      }
+     h2 {
+        font-family:Roboto;
+        font-size:32px;
+        color:ghostwhite
+      }
+       #banner{
+        width:100%;
+        height:360px;
+        object-fit:cover;
+      }
+      body{
+        text-align:center;
+        
+        color:goldenrod;
+      }
+      form{
+        text-align:center;
+      }
+      label,input{
+        display: block;
+        margin:5px auto;
+        text-align:left;
+        width:200px;
+        font-size:20px;
+      }
+      #button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-family:Roboto;
+        font-size: 20px;
+        margin: 2px 2px;
+        cursor: pointer;
+      }
+   #content{
+     border:1px solid#cccccc;
+     border-width:5px;
+     width:300px;
+     padding:10px;
+     margin:10px 0;
+     text-align:center;
+     margin-left:780px;
+   }
+    body{
+      background-image:url(D:\Cognizant Job\personal_fast_tag\static\banner3.jpg);
+    }
+    </style>
+  </head>
+  <body style="color:goldenrod";>
+    <h1 style=text-align:center >FAST TAG CARD</h1>
+
+      <div  id='content'>
+      <p>Fast Tag ID: {{ fast_id }}</p>
+
+      Registration Number: {{ reg_no }}  <br>
+      Chassis Number: {{ chassis_no }} <br>
+      Vehicle Type: {{ vehicle_type }} <br>
+      Amount: {{ amount }}Rs Only<br>
+      Expiry Date:{{expiry_date}}
+      </div>
+      <a href="{{ url_for('all_records') }}">View All Records</a>
+
+  </body>
+</html>
