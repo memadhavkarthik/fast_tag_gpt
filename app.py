@@ -14,14 +14,15 @@ mydb = mysql.connector.connect(
 
 @app.route('/allrecords')
 def all_records():
-    # retrieve all records from the fast_tag_details table
+    # retrieve all records from the fast_tag_details table and order by fast_id in increasing order
     cursor = mydb.cursor()
-    sql = "SELECT * FROM fast_tag_details"
+    sql = "SELECT * FROM fast_tag_details ORDER BY fast_id ASC"
     cursor.execute(sql)
     records = cursor.fetchall()
 
     # render the allrecords.html template and pass in the records
     return render_template('allrecords.html', records=records)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def vehicle_details():
